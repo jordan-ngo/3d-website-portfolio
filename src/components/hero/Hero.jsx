@@ -1,28 +1,78 @@
 import "./hero.css";
-import Speech from "./Speech.jsx"
+import Speech from "./Speech.jsx";
+import {motion} from "motion/react";
+
+const awardVariants = {
+  initial:{
+    x: -100,
+    opacity: 0,
+  },
+  animate:{
+    x: 0,
+    opacity: 1,
+    transition:{
+      duration: 1,
+      staggerChildren: 0.2,
+    }
+  }
+}
+
+const followVariants = {
+  initial:{
+    y: -100,
+    opacity: 0,
+  },
+  animate:{
+    y: 0,
+    opacity: 1,
+    transition:{
+      duration: 1,
+      staggerChildren: 0.2,
+    }
+  }
+}
 
 const Hero = () => {
   return (
     <div className='hero'>
       <div className='hSection left'>
         {/* TITLE */}
-        <h1 className="hTitle">
-          Hey There,
-          <br />
-          <span>I'm Jordan!</span>
-        </h1>
-        <div className="awards">
-          <h2>Top Rated Gooner</h2>
+        <motion.h1
+        initial={{ y: -100, opacity: 0}} 
+        animate={{y: 0, opacity: 1}}
+        transition={{duration: 1}}
+        className="hTitle"
+      >
+        Hey There,
+        <br />
+        <span>I'm Jordan!</span>
+      </motion.h1>
+
+        {/* AWARDS */}
+        <motion.div 
+        variants={awardVariants}
+        initial="initial"
+        animate="animate" 
+        className="awards">
+          <motion.h2>Top Rated Gooner</motion.h2>
           <p>Best Gooner NA</p>
-          {/* AWARDS */}
           <div className="awardList">
-            <img src="/award1.png" alt="" />
-            <img src="/award2.png" alt="" />
-            <img src="/award3.png" alt="" />
+            <motion.img variants={awardVariants} src="/award1.png" alt="" />
+            <motion.img variants={awardVariants} src="/award2.png" alt="" />
+            <motion.img variants={awardVariants} src="/award3.png" alt="" />
           </div>
-        </div>
+        </motion.div>
         {/* SCROLL SVG */}
-        <a href="#services">
+        <motion.a animate={{y: [0,5], opacity: [0, 1, 0]}}
+        transition={{
+          repeat: Infinity,
+          duration: 4,
+          ease: "easeInOut"
+        }}
+        
+        href="#services"
+        className ="scroll"
+      >
           <svg
             width="50px"
             height="50px"
@@ -35,7 +85,7 @@ const Hero = () => {
               stroke="white"
               strokeWidth="1"
             />
-            <path
+            <motion.path
               animate={{ y: [0, 5] }}
               transition={{
                 repeat: Infinity,
@@ -48,24 +98,30 @@ const Hero = () => {
               strokeLinecap="round"
             />
           </svg>
-        </a>
+        </motion.a>
       </div>
       <div className='hSection right'>
         {/* FOLLOW */}
-        <div className="follow">
-          <a href="/">
+        <motion.div 
+        variants={followVariants}
+        initial="initial"
+        animate="animate"
+        className="follow"
+      >
+
+          <motion.a href="/">
             <img src="/instagram.png"></img>
-          </a>
-          <a href="/">
+          </motion.a>
+          <motion.a variants={followVariants} href="/">
             <img src="/facebook.png"></img>
-          </a>
-          <a href="/">
+          </motion.a>
+          <motion.a variants={followVariants} href="/">
             <img src="/youtube.png"></img>
-          </a>
-          <div className="followTextContainer">
+          </motion.a>
+          <motion.div variants={followVariants} className="followTextContainer">
             <div className="followText">FOLLOW ME</div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         {/* BUBBLE */}
         <Speech />
         {/* CERTIFICATE */}
