@@ -114,7 +114,7 @@
 }
 
 .bubbleContainer {
-    width: 50%;
+    width: 50%; 
     display: flex;
     align-items: end;
     gap: 8px;
