@@ -125,17 +125,31 @@ const Hero = () => {
         {/* BUBBLE */}
         <Speech />
         {/* CERTIFICATE */}
-        <div className="certificate">
+        <motion.div className="certificate"
+          animate={{opacity:[0, 1]}} 
+          transition={{duration: 1}}  
+      >
           <img src="/certificate.png" alt="" />
           LMA CERTIFIED
           <br />
           PROFESSIONAL
           <br />
           UI DESIGNER
-        </div>
+        </motion.div>
         {/* CONTACT BUTTON */}
-        <a href="/#contact" className="contactLink">
-          <div className="contactButton">
+        <motion.a href="/#contact" className="contactLink" animate={{
+          x:[200, 0],
+          opacity: [0,1]
+        }}
+          trnsition={{
+            duration: 2,
+          }}
+        >
+          <motion.div className="contactButton" animate={{ rotate: [0, 360] }} transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "linear",
+          }}>
             <svg viewBox="0 0 200 200" width="150" height="150">
               <circle cx="100" cy="100" r="90" fill="pink" />
               <path
@@ -164,8 +178,8 @@ const Hero = () => {
                 <polyline points="9 6 18 6 18 15" />
               </svg>
             </div>
-          </div>
-        </a>
+          </motion.div>
+        </motion.a>
       </div>
       {/* 3D */} 
       <div className="bg">
