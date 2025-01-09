@@ -1,16 +1,19 @@
+import { Canvas } from "@react-three/fiber"
 import "./hero.css";
-import Speech from "./Speech.jsx";
-import {motion} from "motion/react";
+import Speech from "./Speech";
+import { motion } from "motion/react";
+import Shape from "./Shape";
+import { Suspense } from "react";
 
 const awardVariants = {
-  initial:{
+  initial: {
     x: -100,
     opacity: 0,
   },
-  animate:{
+  animate: {
     x: 0,
     opacity: 1,
-    transition:{
+    transition: {
       duration: 1,
       staggerChildren: 0.2,
     }
@@ -18,14 +21,14 @@ const awardVariants = {
 }
 
 const followVariants = {
-  initial:{
+  initial: {
     y: -100,
     opacity: 0,
   },
-  animate:{
+  animate: {
     y: 0,
     opacity: 1,
-    transition:{
+    transition: {
       duration: 1,
       staggerChildren: 0.2,
     }
@@ -38,22 +41,22 @@ const Hero = () => {
       <div className='hSection left'>
         {/* TITLE */}
         <motion.h1
-        initial={{ y: -100, opacity: 0}} 
-        animate={{y: 0, opacity: 1}}
-        transition={{duration: 1}}
-        className="hTitle"
-      >
-        Hey There,
-        <br />
-        <span>I'm Jordan!</span>
-      </motion.h1>
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 1 }}
+          className="hTitle"
+        >
+          Hey There,
+          <br />
+          <span>I'm Jordan!</span>
+        </motion.h1>
 
         {/* AWARDS */}
-        <motion.div 
-        variants={awardVariants}
-        initial="initial"
-        animate="animate" 
-        className="awards">
+        <motion.div
+          variants={awardVariants}
+          initial="initial"
+          animate="animate"
+          className="awards">
           <motion.h2>Top Rated Gooner</motion.h2>
           <p>Best Gooner NA</p>
           <div className="awardList">
@@ -63,16 +66,16 @@ const Hero = () => {
           </div>
         </motion.div>
         {/* SCROLL SVG */}
-        <motion.a animate={{y: [0,5], opacity: [0, 1, 0]}}
-        transition={{
-          repeat: Infinity,
-          duration: 4,
-          ease: "easeInOut"
-        }}
-        
-        href="#services"
-        className ="scroll"
-      >
+        <motion.a animate={{ y: [0, 5], opacity: [0, 1, 0] }}
+          transition={{
+            repeat: Infinity,
+            duration: 4,
+            ease: "easeInOut"
+          }}
+
+          href="#services"
+          className="scroll"
+        >
           <svg
             width="50px"
             height="50px"
@@ -102,12 +105,12 @@ const Hero = () => {
       </div>
       <div className='hSection right'>
         {/* FOLLOW */}
-        <motion.div 
-        variants={followVariants}
-        initial="initial"
-        animate="animate"
-        className="follow"
-      >
+        <motion.div
+          variants={followVariants}
+          initial="initial"
+          animate="animate"
+          className="follow"
+        >
 
           <motion.a href="/">
             <img src="/instagram.png"></img>
@@ -126,20 +129,20 @@ const Hero = () => {
         <Speech />
         {/* CERTIFICATE */}
         <motion.div className="certificate"
-          animate={{opacity:[0, 1]}} 
-          transition={{duration: 1}}  
-      >
+          animate={{ opacity: [0, 1] }}
+          transition={{ duration: 1 }}
+        >
           <img src="/certificate.png" alt="" />
           LMA CERTIFIED
           <br />
-          PROFESSIONAL
+          PROFESSIONAL,
           <br />
           UI DESIGNER
         </motion.div>
         {/* CONTACT BUTTON */}
         <motion.a href="/#contact" className="contactLink" animate={{
-          x:[200, 0],
-          opacity: [0,1]
+          x: [200, 0],
+          opacity: [0, 1]
         }}
           trnsition={{
             duration: 2,
@@ -181,8 +184,13 @@ const Hero = () => {
           </motion.div>
         </motion.a>
       </div>
-      {/* 3D */} 
       <div className="bg">
+        {/* 3D */}
+        <Canvas>
+          <Suspense fallback="loading...">
+            <Shape />
+          </Suspense>
+        </Canvas>
         <div className="hImg">
           <img src="/hero.png" alt="" />
         </div>
