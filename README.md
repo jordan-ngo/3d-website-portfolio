@@ -1,3 +1,3 @@
-# Lama Dev Animated 3D Portfolio Website Project
+# Jordan Ngo 3D Website Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to my website portfolio!
