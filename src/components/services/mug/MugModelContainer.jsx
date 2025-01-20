@@ -7,7 +7,7 @@ const MugModelContainer = () => {
   return (
     <Canvas>
         <Suspense fallback="loading...">
-          <Stage environment="night" intensity={10}>
+          <Stage environment="night" intensity={0.5}>
             <MugModel />
           </Stage>
             <OrbitControls enableZoom={false} autoRotate/>
